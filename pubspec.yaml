@@ -38,6 +38,7 @@ dependencies:
   freezed_annotation:
   json_serializable: ^6.1.4
   flutter_overboard:
+  get_storage:
   
   
  

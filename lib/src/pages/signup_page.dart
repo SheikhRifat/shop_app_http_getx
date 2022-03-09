@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shop_app/src/controller/base_controller.dart';
 import 'package:shop_app/src/function/decoration.dart';
 import 'package:shop_app/src/pages/home_page.dart';
 import 'package:shop_app/src/pages/login_page.dart';
@@ -10,7 +11,9 @@ class SignupPage extends StatefulWidget {
   State<SignupPage> createState() => _SignupPageState();
 }
 
-class _SignupPageState extends State<SignupPage> {
+class _SignupPageState extends State<SignupPage> with BaseController {
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
   GlobalKey<FormState> _fromKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -37,6 +40,7 @@ class _SignupPageState extends State<SignupPage> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: TextFormField(
+                          controller: username,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'please enter your email';
@@ -58,6 +62,7 @@ class _SignupPageState extends State<SignupPage> {
                           borderRadius: BorderRadius.circular(5),
                         ),
                         child: TextFormField(
+                          controller: password,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'please enter your password';
@@ -85,9 +90,9 @@ class _SignupPageState extends State<SignupPage> {
                                 ),
                                 onPressed: () {
                                   if (_fromKey.currentState!.validate()) {
-                                    Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()));
+                                    authC.register(
+                                        username.text, password.text);
+                                    Get.offAll(HomePage());
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
                                           backgroundColor: Colors.white,

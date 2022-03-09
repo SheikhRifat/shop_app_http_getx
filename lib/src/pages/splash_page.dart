@@ -17,7 +17,7 @@ class _SplashPageState extends State<SplashPage> {
 
   _navigatetowelcomePage() async {
     await Future.delayed(Duration(seconds: 2), () {});
-    Get.to(OnboardingPage());
+    Get.offAll(OnboardingPage());
   }
 
   @override
