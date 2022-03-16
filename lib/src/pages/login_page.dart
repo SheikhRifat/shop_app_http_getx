@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> with BaseController {
                                 onPressed: () {
                                   if (_fromKey.currentState!.validate()) {
                                     authC.login(username.text, password.text);
-                                    Get.to(HomePage());
+                                    Get.offAll(HomePage());
 
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
