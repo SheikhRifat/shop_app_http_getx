@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shop_app/src/controller/categoeies_controller.dart';
+import 'package:shop_app/src/pages/cart_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -266,9 +267,7 @@ class _HomePageState extends State<HomePage> {
             onPressed: () {}, icon: Icon(Icons.notifications_none_outlined)),
         IconButton(
             onPressed: () {
-              // Navigator.of(context).push(MaterialPageRoute(
-              //   builder: (context) => CartPage(),
-              // ));
+              Get.to(CartPage());
             },
             icon: Icon(Icons.shopping_cart_outlined)),
       ],

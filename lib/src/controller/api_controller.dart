@@ -7,6 +7,8 @@ class ApiController {
   final url = 'https://fakestoreapi.com/products';
   final url2 = 'https://fakestoreapi.com/products/category/';
   final url3 = 'https://fakestoreapi.com/products/categories';
+  var url4 = "https://fakestoreapi.com/carts/1";
+  var purl = "https://fakestoreapi.com/products/";
 
   getProducts() async {
     print('Firing happening here-------------');
@@ -29,5 +31,16 @@ class ApiController {
     var response = await http.get(Uri.parse(url3));
     var categoriesJson = json.decode(response.body);
     return categoriesJson;
+  }
+
+  getCart() async {
+    var res = await http.get(Uri.parse(url4));
+    var productsJson = json.decode(res.body);
+    return productsJson["products"];
+  }
+
+  Future getProduct1(productId) async {
+    var res = await http.get(Uri.parse(purl + productId.toString()));
+    return json.decode(res.body);
   }
 }
